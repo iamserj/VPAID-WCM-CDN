@@ -52,6 +52,9 @@
                 case "AdSkippableStateChange":
                     $updateState.call(this, "AdSkippableStateChange", message.event.data.value);
                     break;
+                case "Android":
+                    $updateState.call(this, "Android");
+                    break;
                 case "AdPaused":
                     $updateState.call(this, "AdPaused");
                     break;
@@ -81,6 +84,9 @@
     };
     Interface.prototype.pause = function() {
         sendToAPP("apply", {method:"pauseAd"}, this.id);
+    };
+    Interface.prototype.fakePause = function() {
+        sendToAPP("apply", {method:"fakePauseAd"}, this.id);
     };
     Interface.prototype.stop = function() {
         sendToAPP("apply", {method:"stopAd"}, this.id);
